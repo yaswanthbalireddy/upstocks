@@ -94,7 +94,7 @@ class Project extends React.Component {
                     // offset={1}
                     style={{
                       display: "flex",
-                      justifyContent: "space-around",
+                      justifyContent: "space-between",
                       alignItems: "center",
                     }}
                   >
