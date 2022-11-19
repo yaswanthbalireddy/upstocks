@@ -55,6 +55,8 @@
     color: #000000b0;
     font-family: Tahoma;
     text-transform: uppercase;
+    min-width: 100px;
+    text-align: left;
   }
   .buttons {
     border: none;
