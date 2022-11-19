@@ -80,7 +80,7 @@ class Project extends React.Component {
               >
                 <Row
                   style={{
-                    width: "92%",
+                    width: "90%",
                     justifyContent: "space-evenly",
                     display: "flex",
                     alignItems: "center",
@@ -93,7 +93,7 @@ class Project extends React.Component {
                     span={16}
                     style={{
                       display: "flex",
-                      justifyContent: "space-evenly",
+                      justifyContent: "space-between",
                       alignItems: "center",
                     }}
                   >
