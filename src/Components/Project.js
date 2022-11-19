@@ -28,8 +28,9 @@ class Project extends React.Component {
   cal = (data) => {
     let res = 0;
     data?.map((e) => (res += e?.mtm));
-    // console.log(mtm, "bvcchgvukv");
-    // console.log(res, "mknkjhvyjcvgh")
+    let formatted = res.toLocaleString("en-US");
+    console.log(formatted, "bvcchgvukv");
+    console.log(res, "mknkjhvyjcvgh");
     this.setState({ result: res });
   };
 
@@ -89,7 +90,12 @@ class Project extends React.Component {
                   <button className="buttons">{data?.nse}</button>
                   <button className="buttons">{data?.date}</button>
                   <button className="buttons">{data?.ce}</button>
-                  <button className="buttons">{data?.delivery}</button>
+                  <button
+                    className="buttons"
+                    style={{ backgroundColor: "#e5dce6" }}
+                  >
+                    {data?.delivery}
+                  </button>
                 </Row>
               </div>
               <div
@@ -110,12 +116,12 @@ class Project extends React.Component {
                   }}
                 >
                   <p style={{ color: "#696363b0", fontSize: "12px" }}>
-                    NET QTY{" "}
+                    NET QTY
                     <span
                       className="para"
                       style={{ fontSize: "18px", fontWeight: "400" }}
                     >
-                      0
+                      {` ${data?.net}`}
                     </span>
                   </p>
                   <p style={{ color: "#696363b0", fontSize: "12px" }}>
@@ -125,7 +131,7 @@ class Project extends React.Component {
                       style={{
                         color: data?.mtm.toString().includes("-")
                           ? "red"
-                          : "#36e736",
+                          : "#50C878",
                         fontSize: "18px",
                         fontWeight: "400",
                       }}
@@ -135,14 +141,20 @@ class Project extends React.Component {
                   </p>
                 </Row>
               </div>
-              <hr style={{ width: "90%", marginTop: "-6px" }} />
+              <hr
+                style={{
+                  width: "90%",
+                  marginTop: "-6px",
+                  borderColor: "#ebebeb",
+                }}
+              />
             </>
           ))}
         </div>
 
         <div
           style={{
-            backgroundColor: "#d2d2d2",
+            backgroundColor: "#dfdfdf",
             minHeight: "40px",
             display: "flex",
             justifyContent: "center",
@@ -166,12 +178,12 @@ class Project extends React.Component {
             <span
               className="para"
               style={{
-                color: result?.toString().includes("-") ? "red" : "#36e736",
+                color: result?.toString().includes("-") ? "red" : "#50C878",
                 fontSize: "18px",
                 fontWeight: "400",
               }}
             >
-              {parseFloat(result)?.toFixed(2)}
+              {`₹ ${parseFloat(result)?.toFixed(2)}`}
             </span>
           </Row>
         </div>
@@ -301,7 +313,7 @@ class Project extends React.Component {
                   <span>Bank</span>
                   <Form.Item
                     name={"bank"}
-                    rules={[{ required: true, message: "Please Enter Name!" }]}
+                    rules={[{ required: true, message: "Please Enter Bank!" }]}
                   >
                     <Input />
                   </Form.Item>
@@ -310,7 +322,7 @@ class Project extends React.Component {
                   <span>NSE</span>
                   <Form.Item
                     name={"nse"}
-                    rules={[{ required: true, message: "Please Enter Name!" }]}
+                    rules={[{ required: true, message: "Please Enter NSE!" }]}
                   >
                     <Input />
                   </Form.Item>
@@ -319,7 +331,7 @@ class Project extends React.Component {
                   <span>Date</span>
                   <Form.Item
                     name={"date"}
-                    rules={[{ required: true, message: "Please Enter Name!" }]}
+                    rules={[{ required: true, message: "Please Enter Date!" }]}
                   >
                     <Input />
                   </Form.Item>
@@ -328,7 +340,9 @@ class Project extends React.Component {
                   <span>Ce or Pe</span>
                   <Form.Item
                     name={"ce"}
-                    rules={[{ required: true, message: "Please Enter Name!" }]}
+                    rules={[
+                      { required: true, message: "Please Enter CE OR PE!" },
+                    ]}
                   >
                     <Input />
                   </Form.Item>
@@ -337,7 +351,18 @@ class Project extends React.Component {
                   <span>Delivery</span>
                   <Form.Item
                     name={"delivery"}
-                    rules={[{ required: true, message: "Please Enter Name!" }]}
+                    rules={[
+                      { required: true, message: "Please Enter Delivery!" },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={24}>
+                  <span>NET QYT</span>
+                  <Form.Item
+                    name={"net"}
+                    rules={[{ required: true, message: "Please Enter Net!" }]}
                   >
                     <Input />
                   </Form.Item>
@@ -346,9 +371,15 @@ class Project extends React.Component {
                   <span>MTM</span>
                   <Form.Item
                     name={"mtm"}
-                    rules={[{ required: true, message: "Please Enter Name!" }]}
+                    rules={[{ required: true, message: "Please Enter MTM!" }]}
                   >
-                    <InputNumber style={{ width: "100%" }} />
+                    <InputNumber
+                      // formatter={(value) =>
+                      //   ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      // }
+                      // parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                      style={{ width: "100%" }}
+                    />
                   </Form.Item>
                 </Col>
               </Row>
