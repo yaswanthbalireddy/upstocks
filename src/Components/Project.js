@@ -80,22 +80,33 @@ class Project extends React.Component {
               >
                 <Row
                   style={{
-                    width: "95%",
+                    width: "92%",
                     justifyContent: "space-evenly",
                     display: "flex",
                     alignItems: "center",
                   }}
                 >
-                  <p className="para">{data?.bank}</p>
-                  <button className="buttons">{data?.nse}</button>
-                  <button className="buttons">{data?.date}</button>
-                  <button className="buttons">{data?.ce}</button>
-                  <button
-                    className="buttons"
-                    style={{ backgroundColor: "#e5dce6" }}
+                  <Col span={8}>
+                    <p className="para1">{data?.bank}</p>
+                  </Col>
+                  <Col
+                    span={16}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-evenly",
+                      alignItems: "center",
+                    }}
                   >
-                    {data?.delivery}
-                  </button>
+                    <button className="buttons">{data?.nse}</button>
+                    <button className="buttons">{data?.date}</button>
+                    <button className="buttons">{data?.ce}</button>
+                    <button
+                      className="buttons"
+                      style={{ backgroundColor: "#e5dce6" }}
+                    >
+                      {data?.delivery}
+                    </button>
+                  </Col>
                 </Row>
               </div>
               <div
@@ -104,7 +115,7 @@ class Project extends React.Component {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  marginTop: "-20px",
+                  // marginTop: "-20px",
                 }}
               >
                 <Row
@@ -115,7 +126,15 @@ class Project extends React.Component {
                     alignItems: "center",
                   }}
                 >
-                  <p style={{ color: "#696363b0", fontSize: "12px" }}>
+                  <Col
+                    span={12}
+                    style={{
+                      color: "#696363b0",
+                      fontSize: "12px",
+                      textAlign: "left",
+                      // float: "left",
+                    }}
+                  >
                     NET QTY
                     <span
                       className="para"
@@ -123,8 +142,16 @@ class Project extends React.Component {
                     >
                       {` ${data?.net}`}
                     </span>
-                  </p>
-                  <p style={{ color: "#696363b0", fontSize: "12px" }}>
+                  </Col>
+                  <Col
+                    span={12}
+                    style={{
+                      color: "#696363b0",
+                      fontSize: "12px",
+                      textAlign: "right",
+                      // float: "right",
+                    }}
+                  >
                     MTM{"  "}
                     <span
                       className="para"
@@ -136,15 +163,15 @@ class Project extends React.Component {
                         fontWeight: "400",
                       }}
                     >
-                      {`₹ ${parseFloat(data?.mtm).toFixed(2)}`}
+                      {` ₹ ${parseFloat(data?.mtm).toFixed(2)}`}
                     </span>
-                  </p>
+                  </Col>
                 </Row>
               </div>
               <hr
                 style={{
                   width: "90%",
-                  marginTop: "-6px",
+                  // marginTop: "-6px",
                   borderColor: "#ebebeb",
                 }}
               />
