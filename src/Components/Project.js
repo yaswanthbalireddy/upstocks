@@ -17,10 +17,10 @@ class Project extends React.Component {
   }
 
   onFinish = (values) => {
-    console.log(values);
+    // console.log(values);
     let existData = this.state?.data?.length > 0 ? this.state.data : [];
     existData.push(values);
-    console.log(existData);
+    // console.log(existData);
     this.setState({ data: existData, modal: false });
     this.cal(existData);
   };
@@ -28,15 +28,15 @@ class Project extends React.Component {
   cal = (data) => {
     let res = 0;
     data?.map((e) => (res += e?.mtm));
-    let formatted = res.toLocaleString("en-US");
-    console.log(formatted, "bvcchgvukv");
-    console.log(res, "mknkjhvyjcvgh");
+    // let formatted = res.toLocaleString("en-US");
+    // console.log(formatted, "bvcchgvukv");
+    // console.log(res, "mknkjhvyjcvgh");
     this.setState({ result: res });
   };
 
   render() {
     const { modal, data, result } = this.state;
-    console.log(data);
+    // console.log(data);
     return (
       <>
         <div className="main-con">
