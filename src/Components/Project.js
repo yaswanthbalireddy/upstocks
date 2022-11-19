@@ -86,11 +86,12 @@ class Project extends React.Component {
                     alignItems: "center",
                   }}
                 >
-                  <Col span={8}>
+                  <Col span={7}>
                     <p className="para1">{data?.bank}</p>
                   </Col>
                   <Col
                     span={16}
+                    offset={1}
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
