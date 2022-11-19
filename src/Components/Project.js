@@ -90,8 +90,8 @@ class Project extends React.Component {
                     <p className="para1">{data?.bank}</p>
                   </Col>
                   <Col
-                    span={16}
-                    offset={1}
+                    span={17}
+                    // offset={1}
                     style={{
                       display: "flex",
                       justifyContent: "space-between",
