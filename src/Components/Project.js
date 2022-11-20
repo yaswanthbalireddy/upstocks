@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Form,
-  Input,
-  Modal,
-  Row,
-  Col,
-  Button,
-  InputNumber,
-  Badge,
-} from "antd";
+import { Form, Input, Modal, Row, Col, Button, InputNumber, Badge } from "antd";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
 import { BiRupee } from "react-icons/bi";
@@ -37,8 +28,6 @@ class Project extends React.Component {
   cal = (data) => {
     let res = 0;
     data?.map((e) => (res += e?.mtm));
-    // let formatted = res.toLocaleString("en-US");
-    // console.log(formatted, "bvcchgvukv");
     // console.log(res, "mknkjhvyjcvgh");
     this.setState({ result: res });
   };
@@ -52,11 +41,15 @@ class Project extends React.Component {
           <Row className="top-con">
             <div className="sub-con">
               <Badge dot={"show"} status="error">
-                <GiHamburgerMenu style={{color: "#FFFFFF", fontSize: "20px", marginLeft: "15px"}} className="icon" />
+                <GiHamburgerMenu
+                  style={{
+                    color: "#FFFFFF",
+                    fontSize: "20px",
+                    marginLeft: "15px",
+                  }}
+                  className="icon"
+                />
               </Badge>
-                {/* <span>
-                  <GiHamburgerMenu className="icon" />
-                </span> */}
               <h1 className="heading">Portfolio</h1>
             </div>
             <span>
@@ -72,7 +65,7 @@ class Project extends React.Component {
           <Row style={{ width: "100%" }}>
             <button
               className="button"
-              style={{ borderBottom: "1px solid #0f3f6c" }}
+              style={{ borderBottom: "2px solid #034a8c" }}
             >
               POSITIONS
             </button>
@@ -176,7 +169,9 @@ class Project extends React.Component {
                         fontWeight: "400",
                       }}
                     >
-                      {` ₹ ${parseFloat(data?.mtm).toFixed(2)}`}
+                      {data?.mtm.toLocaleString().includes(".")
+                        ? `₹ ${(data?.mtm).toLocaleString()}`
+                        : `₹ ${(data?.mtm).toLocaleString()}.00`}
                     </span>
                   </Col>
                 </Row>
@@ -229,7 +224,9 @@ class Project extends React.Component {
                 fontWeight: "400",
               }}
             >
-              {`₹ ${parseFloat(result)?.toFixed(2)}`}
+              {result.toLocaleString().includes(".")
+                ? `₹ ${result.toLocaleString()}`
+                : `₹ ${result.toLocaleString()}.00`}
             </span>
           </Row>
         </div>
