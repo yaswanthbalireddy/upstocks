@@ -13,7 +13,13 @@ class Project extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { modal: false, data: [], result: 0 };
+    this.state = {
+      modal: false,
+      data: [],
+      result: 0,
+      totalModal: false,
+      total: 0,
+    };
   }
 
   onFinish = (values) => {
@@ -32,8 +38,13 @@ class Project extends React.Component {
     this.setState({ result: res });
   };
 
+  onFinishTotal = (values) => {
+    // console.log(values)
+    this.setState({ total: values?.total, totalModal: false });
+  };
+
   render() {
-    const { modal, data, result } = this.state;
+    const { modal, data, result, totalModal, total } = this.state;
     // console.log(data);
     return (
       <>
@@ -205,7 +216,12 @@ class Project extends React.Component {
             }}
           >
             <Row>
-              <p style={{ color: "#747474", fontWeight: "500" }}>P&L </p>
+              <p
+                onClick={() => this.setState({ totalModal: true })}
+                style={{ color: "#747474", fontWeight: "500" }}
+              >
+                P&L{" "}
+              </p>
               <span>
                 <UpOutlined
                   style={{
@@ -219,12 +235,18 @@ class Project extends React.Component {
             <span
               className="para"
               style={{
-                color: result?.toString().includes("-") ? "red" : "#50C878",
+                color: result?.toString().includes("-")
+                  ? "red"
+                  : total?.toString().includes("-")
+                  ? "red"
+                  : "#50C878",
                 fontSize: "14px",
                 fontWeight: "500",
               }}
             >
-              {result.toLocaleString().includes(".")
+              {total !== 0
+                ? `₹ ${total}`
+                : result.toLocaleString().includes(".")
                 ? `₹ ${result.toLocaleString()}`
                 : `₹ ${result.toLocaleString()}.00`}
             </span>
@@ -417,6 +439,72 @@ class Project extends React.Component {
                     rules={[{ required: true, message: "Please Enter MTM!" }]}
                   >
                     <InputNumber
+                      // formatter={(value) =>
+                      //   ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      // }
+                      // parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                      style={{ width: "100%" }}
+                    />
+                  </Form.Item>
+                </Col>
+              </Row>
+            </Form>
+          </Modal>
+        )}
+
+        {totalModal && (
+          <Modal
+            title="Total Modal"
+            open={totalModal}
+            onCancel={() => {
+              this.setState({
+                totalModal: false,
+              });
+            }}
+            style={{ minHeight: "100vh" }}
+            destroyOnClose={true}
+            footer={[
+              <div>
+                <Button
+                  onClick={() => {
+                    this.setState({
+                      totalModal: false,
+                    });
+                  }}
+                  //   style={{
+                  //     height: "35px",
+                  //     width: "100px",
+                  //     borderRadius: "5px",
+                  //     marginRight: "25px",
+                  //   }}
+                  type="ghost"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  //   style={{
+                  //     height: "35px",
+                  //     width: "100px",
+                  //     borderRadius: "5px",
+                  //   }}
+                  form="total"
+                >
+                  Save
+                </Button>
+              </div>,
+            ]}
+          >
+            <Form id={"total"} onFinish={this.onFinishTotal}>
+              <Row>
+                <Col span={24}>
+                  <span>Total</span>
+                  <Form.Item
+                    name={"total"}
+                    rules={[{ required: true, message: "Please Enter MTM!" }]}
+                  >
+                    <Input
                       // formatter={(value) =>
                       //   ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                       // }
