@@ -166,7 +166,7 @@ class Project extends React.Component {
                           ? "red"
                           : "#50C878",
                         fontSize: "18px",
-                        fontWeight: "400",
+                        fontWeight: "500",
                       }}
                     >
                       {data?.mtm.toLocaleString().includes(".")
@@ -211,7 +211,7 @@ class Project extends React.Component {
                   style={{
                     fontSize: "8px",
                     marginLeft: "9px",
-                    marginTop: "20px",
+                    marginTop: "15px",
                   }}
                 />
               </span>
@@ -221,7 +221,7 @@ class Project extends React.Component {
               style={{
                 color: result?.toString().includes("-") ? "red" : "#50C878",
                 fontSize: "14px",
-                fontWeight: "400",
+                fontWeight: "500",
               }}
             >
               {result.toLocaleString().includes(".")
