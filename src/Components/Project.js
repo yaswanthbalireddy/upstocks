@@ -1,5 +1,14 @@
 import React from "react";
-import { Form, Input, Modal, Row, Col, Button, InputNumber } from "antd";
+import {
+  Form,
+  Input,
+  Modal,
+  Row,
+  Col,
+  Button,
+  InputNumber,
+  Badge,
+} from "antd";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
 import { BiRupee } from "react-icons/bi";
@@ -42,9 +51,12 @@ class Project extends React.Component {
         <div className="main-con">
           <Row className="top-con">
             <div className="sub-con">
-              <span>
-                <GiHamburgerMenu className="icon" />
-              </span>
+              <Badge dot={"show"} status="error">
+                <GiHamburgerMenu style={{color: "#FFFFFF", fontSize: "20px", marginLeft: "15px"}} className="icon" />
+              </Badge>
+                {/* <span>
+                  <GiHamburgerMenu className="icon" />
+                </span> */}
               <h1 className="heading">Portfolio</h1>
             </div>
             <span>
@@ -197,17 +209,23 @@ class Project extends React.Component {
               alignItems: "center",
             }}
           >
-            <span style={{ color: "#747474" }}>
-              P&L{" "}
+            <Row>
+              <p style={{ color: "#747474", fontWeight: "500" }}>P&L </p>
               <span>
-                <UpOutlined style={{ fontSize: "10px" }} />
+                <UpOutlined
+                  style={{
+                    fontSize: "8px",
+                    marginLeft: "9px",
+                    marginTop: "20px",
+                  }}
+                />
               </span>
-            </span>
+            </Row>
             <span
               className="para"
               style={{
                 color: result?.toString().includes("-") ? "red" : "#50C878",
-                fontSize: "18px",
+                fontSize: "14px",
                 fontWeight: "400",
               }}
             >
