@@ -211,7 +211,7 @@ class Project extends React.Component {
                   style={{
                     fontSize: "8px",
                     marginLeft: "9px",
-                    marginTop: "15px",
+                    marginTop: "18px",
                   }}
                 />
               </span>
